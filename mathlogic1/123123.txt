@@ -1,0 +1,44 @@
+Q|-B->A
+	|-Q->B->A => output
+	Q => hyp
+	Formula is axiom or hypothesis
+	if (axiom || hyp)
+	{
+		Formula->Q->Formula [1]
+		Formula [Axim or hyp]
+		Q->Formula [MP 1,2]
+	}
+	else
+	{
+		if (Formula.equals(Q))
+		{
+			Q->((Q->Q)->Q)
+			Q->(Q->Q)
+			(Q->(Q->Q))->((Q->((Q->Q)->Q))->(Q->Q))
+			(Q->((Q->Q)->Q))->(Q->Q)
+			Q->Q
+		}
+		else
+		{
+			#a) R->Formula
+			#b) R
+			Formula MP [a,b]
+			output << 
+			1) (Q->R)->(Q->R->Formula)->(Q->Formula)
+			2) (Q->R->Formula)->(Q->Formula)
+			3) Q->Formula
+		}
+	}
+	
+A|-B->A // hyp = {A} out = {B->A}
+A->B->A // sta = {A->B->A}
+A // stat = {A->B->A, A}
+B->A 
+A|-B->A
+
+hyp = {A}
+out = {B->A}
+sta = {A->B->A, A, B->A}
+
+s
+
